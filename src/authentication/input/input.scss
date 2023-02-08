@@ -1,0 +1,33 @@
+@import "../../App.scss";
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+
+label{
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #4b4b4b;
+}
+
+ input{
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    outline: none;
+    padding: 10px 15px;
+    color: #000;
+}
+
+ &:hover{
+    input{
+    border-color: black;
+    }
+}
+
+ &:focus{
+    input{
+    border-color: black;
+    }
+}
+}
