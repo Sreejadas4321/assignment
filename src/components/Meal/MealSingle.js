@@ -51,8 +51,8 @@ const MealSingle = ({meal}) => {
         </div>
 
         <div className='sc-title'>Meal Details</div>
-        <div className='sc-title add-cart' onClick={()=>{addToCart(meal.title, meal.thumbnail, meal.id)}}>
-        <Link to="/profile">
+        <div className='sc-cart' onClick={()=>{addToCart(meal.title, meal.thumbnail, meal.id)}}>
+        <Link to="/profile" className='cart'>
          Add To Cart <FaCartPlus/>
         </Link>
         </div>

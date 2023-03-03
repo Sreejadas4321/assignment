@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { Link , useNavigate} from 'react-router-dom'
 import Input from '../input/Input'
 import "./signup.scss"
-import { createUserWithEmailAndPassword , updateProfile} from 'firebase/auth';
+import { createUserWithEmailAndPassword , updateProfile, onAuthStateChanged} from 'firebase/auth';
 import { auth , db} from '../../firebase';
 import {
   collection,
@@ -23,8 +23,14 @@ export default function Signup() {
         email: "",
         pass: "",
     });
+    const [user, setUser]= useState(null);
     const [errorMsg, setErrorMsg] = useState("");
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+
+   
+    
+
+ 
 
     const handleSub=()=>{
         if (!values.name || !values.email || !values.pass) {
@@ -37,6 +43,7 @@ export default function Signup() {
             createUserWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
+        setUser(res.user)
         const user = res.user;
         await updateProfile(user, {
           displayName: values.name,
@@ -51,6 +58,8 @@ export default function Signup() {
       });
     }
   return (
+   
+    
     <div className='signup-container'>
         <div className='innerbox'>
             <h1 className='signup-heading'>Signup</h1>
@@ -88,5 +97,6 @@ export default function Signup() {
             </div>
         </div>
     </div>
+   
   )
 }

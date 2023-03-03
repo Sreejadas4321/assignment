@@ -5,18 +5,18 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-
 import { Home, MealDetails, Error, Category } from "./pages/index";
-
-import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
 import Login from './authentication/login/Login';
 import Signup from './authentication/signup/Signup';
 import { useEffect, useState } from 'react';
 import UserProfile from './components/userProfile/UserProfile';
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
 //this is the main component of this application
 function App() {
   const [userName, setUserName] = useState("");
+
+  
   //authenticating user
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -28,9 +28,9 @@ function App() {
   // available routes
   return (
     <BrowserRouter>
-      <Header />
-      <Sidebar />
-      <Routes>
+       <Header/>
+       <Sidebar/>
+     <Routes>
         <Route path = "/" element = {<Home/>} />
         <Route path = "/login" element = {<Login/>} />
         <Route path = "/signup" element = {<Signup/>} />

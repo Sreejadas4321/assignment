@@ -217,6 +217,8 @@ input, textarea, select{
   position: relative;
   justify-content: space-between;
 
+  
+
   &::after{
     content: "";
     position: absolute;
@@ -226,11 +228,7 @@ input, textarea, select{
     width: 80px;
     background-color: $clr-orange;
   }
-  &:hover{
-   add-cart{
-    background-color: #C5541A;
-   }
-  }
+
 }
 
 // opacity

@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import "./userProfile.scss"
 import { useNavigate } from "react-router-dom";
+import { auth } from '../../firebase';
 
 export default function UserProfile() {
     const [savedRecipe, setSavedRecipe] = useState([]);
@@ -22,13 +23,23 @@ export default function UserProfile() {
         const docSnap = await getDoc(docRef);
         setSavedRecipe(docSnap.data().recipes);
     }
-    test()
+    //test()
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+       
+        test()
+      } else {setSavedRecipe([])
+        alert("LOGIN FIRST")
+        navigate("/login") 
+      };
+    });
     },[])
     const navigate = useNavigate();
     const navigateToDetailsPage = (id) => {
         navigate(`/meal/${id}`, { state: { id: id } });
       };
   return (
+    <>
     <div className='section-wrapper'>
       <div className='container'>
         <div className='sc-title'>Saved meal</div>
@@ -59,5 +70,6 @@ export default function UserProfile() {
         </section>
       </div>
     </div>
+    </>
   )
 }
